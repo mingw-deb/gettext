@@ -1,0 +1,23 @@
+From 67c5161ef035aa5ad3e6f7797d9f6e5f20021b84 Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sourceforge.net>
+Date: Wed, 24 Jan 2018 13:35:53 +0100
+Subject: vs compatible
+
+prevents "Cannot export rpl_printf: symbol not found"
+---
+ gettext-runtime/intl/libgnuintl.in.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gettext-runtime/intl/libgnuintl.in.h b/gettext-runtime/intl/libgnuintl.in.h
+index dc1947f..d57210d 100644
+--- a/gettext-runtime/intl/libgnuintl.in.h
++++ b/gettext-runtime/intl/libgnuintl.in.h
+@@ -336,7 +336,7 @@ extern int vfprintf (FILE *, const char *, va_list);
+ 
+ #if !(defined printf && defined _GL_STDIO_H) /* don't override gnulib */
+ #undef printf
+-#if defined __NetBSD__ || defined __BEOS__ || defined __CYGWIN__ || defined __MINGW32__
++#if defined __NetBSD__ || defined __BEOS__ || defined __CYGWIN__ || defined __MINGW32__ || defined _MSC_VER
+ /* Don't break __attribute__((format(printf,M,N))).
+    This redefinition is only possible because the libc in NetBSD, Cygwin,
+    mingw does not have a function __printf__.

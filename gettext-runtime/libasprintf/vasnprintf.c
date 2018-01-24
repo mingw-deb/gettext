@@ -67,7 +67,14 @@
 #endif
 
 #include <locale.h>     /* localeconv() */
+#if defined(__MINGW64_VERSION_MAJOR) && defined(__USE_MINGW_ANSI_STDIO)
+#  define REMOVED__USE_MINGW_ANSI_STDIO
+#  undef __USE_MINGW_ANSI_STDIO
+#endif
 #include <stdio.h>      /* snprintf(), sprintf() */
+#if defined(__MINGW64_VERSION_MAJOR) && defined(REMOVED__USE_MINGW_ANSI_STDIO)
+#  define __USE_MINGW_ANSI_STDIO
+#endif
 #include <stdlib.h>     /* abort(), malloc(), realloc(), free() */
 #include <string.h>     /* memcpy(), strlen() */
 #include <errno.h>      /* errno */

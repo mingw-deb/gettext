@@ -1,0 +1,22 @@
+From 793bf174bdaee0d88cdc567dc5e1ab196c0d3d90 Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sourceforge.net>
+Date: Wed, 24 Jan 2018 13:29:15 +0100
+Subject: always use libintl vsnprintf (mingw)
+
+---
+ gettext-runtime/intl/printf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gettext-runtime/intl/printf.c b/gettext-runtime/intl/printf.c
+index 7e6bebd..0066400 100644
+--- a/gettext-runtime/intl/printf.c
++++ b/gettext-runtime/intl/printf.c
+@@ -208,7 +208,7 @@ DLL_EXPORTED
+ int
+ libintl_vsnprintf (char *resultbuf, size_t length, const char *format, va_list args)
+ {
+-  if (strchr (format, '$') == NULL)
++  if (0 && (strchr (format, '$') == NULL))
+     return system_vsnprintf (resultbuf, length, format, args);
+   else
+     {

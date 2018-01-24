@@ -1,0 +1,5 @@
+0001-always-use-libintl-vsnprintf-mingw.patch
+0002-don-t-include-ctype-after-gnulibs-wctype-mingw.patch
+0003-fix-asprintf-conflict-mingw.patch
+0004-vs-compatible.patch
+0005-gnulib-fix-underscore-cond.patch

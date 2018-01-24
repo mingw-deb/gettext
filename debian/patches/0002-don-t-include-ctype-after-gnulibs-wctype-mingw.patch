@@ -1,0 +1,58 @@
+From 9ee40b654d49effd35f37a996d4ee7b78b683871 Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sourceforge.net>
+Date: Wed, 24 Jan 2018 13:31:41 +0100
+Subject: don't include ctype after gnulibs-wctype (mingw)
+
+---
+ gettext-tools/gnulib-lib/libxml/parser.c  | 6 +++---
+ gettext-tools/gnulib-lib/libxml/threads.c | 7 ++++---
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/gettext-tools/gnulib-lib/libxml/parser.c b/gettext-tools/gnulib-lib/libxml/parser.c
+index c5741e3..7b4067e 100644
+--- a/gettext-tools/gnulib-lib/libxml/parser.c
++++ b/gettext-tools/gnulib-lib/libxml/parser.c
+@@ -43,6 +43,9 @@
+ #include <limits.h>
+ #include <string.h>
+ #include <stdarg.h>
++#ifdef HAVE_CTYPE_H
++#include <ctype.h>
++#endif
+ #include <libxml/xmlmemory.h>
+ #include <libxml/threads.h>
+ #include <libxml/globals.h>
+@@ -62,9 +65,6 @@
+ #include <libxml/xmlschemastypes.h>
+ #include <libxml/relaxng.h>
+ #endif
+-#ifdef HAVE_CTYPE_H
+-#include <ctype.h>
+-#endif
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
+diff --git a/gettext-tools/gnulib-lib/libxml/threads.c b/gettext-tools/gnulib-lib/libxml/threads.c
+index b9d6cae..c5d23c8 100644
+--- a/gettext-tools/gnulib-lib/libxml/threads.c
++++ b/gettext-tools/gnulib-lib/libxml/threads.c
+@@ -12,15 +12,16 @@
+ 
+ #include <string.h>
+ 
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#endif
++
+ #include <libxml/threads.h>
+ #include <libxml/globals.h>
+ 
+ #ifdef HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
+-#ifdef HAVE_UNISTD_H
+-#include <unistd.h>
+-#endif
+ #ifdef HAVE_STDLIB_H
+ #include <stdlib.h>
+ #endif
