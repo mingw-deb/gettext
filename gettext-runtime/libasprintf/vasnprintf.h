@@ -40,6 +40,8 @@
 extern "C" {
 #endif
 
+#if !defined(__USE_MINGW_ANSI_STDIO) && defined(__MINGW64_VERSION_MAJOR)
+
 /* Write formatted output to a string dynamically allocated with malloc().
    You can pass a preallocated buffer for the result in RESULTBUF and its
    size in *LENGTHP; otherwise you pass RESULTBUF = NULL.
@@ -64,10 +66,13 @@ extern "C" {
                 free (output);
             }
   */
+
 extern char * asnprintf (char *resultbuf, size_t *lengthp, const char *format, ...)
        __attribute__ ((__format__ (__printf__, 3, 4)));
 extern char * vasnprintf (char *resultbuf, size_t *lengthp, const char *format, va_list args)
        __attribute__ ((__format__ (__printf__, 3, 0)));
+
+#endif /* !defined(__USE_MINGW_ANSI_STDIO) && defined(__MINGW64_VERSION_MAJOR) */
 
 #ifdef __cplusplus
 }

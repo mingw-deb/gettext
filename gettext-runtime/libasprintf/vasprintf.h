@@ -37,6 +37,8 @@
 extern "C" {
 #endif
 
+#if !defined(__USE_MINGW_ANSI_STDIO) && defined(__MINGW64_VERSION_MAJOR)
+
 /* Write formatted output to a string dynamically allocated with malloc().
    If the memory allocation succeeds, store the address of the string in
    *RESULT and return the number of resulting bytes, excluding the trailing
@@ -45,6 +47,8 @@ extern int asprintf (char **result, const char *format, ...)
        __attribute__ ((__format__ (__printf__, 2, 3)));
 extern int vasprintf (char **result, const char *format, va_list args)
        __attribute__ ((__format__ (__printf__, 2, 0)));
+
+#endif /* !defined(__USE_MINGW_ANSI_STDIO) && defined(__MINGW64_VERSION_MAJOR) */
 
 #ifdef __cplusplus
 }
