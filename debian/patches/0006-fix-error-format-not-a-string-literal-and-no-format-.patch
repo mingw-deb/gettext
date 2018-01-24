@@ -1,0 +1,59 @@
+From cfc7cd2e52c04097204ffaaeefe6522e8f89910f Mon Sep 17 00:00:00 2001
+From: Tobias Schlemmer <keinstein@users.sourceforge.net>
+Date: Wed, 24 Jan 2018 14:17:28 +0100
+Subject: fix error: format not a string literal and no format arguments
+ [-Werror=format-security]
+
+---
+ gettext-tools/gnulib-lib/libcroco/cr-statement.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/gettext-tools/gnulib-lib/libcroco/cr-statement.c b/gettext-tools/gnulib-lib/libcroco/cr-statement.c
+index 617520f..22015cf 100644
+--- a/gettext-tools/gnulib-lib/libcroco/cr-statement.c
++++ b/gettext-tools/gnulib-lib/libcroco/cr-statement.c
+@@ -2607,7 +2607,7 @@ cr_statement_dump_ruleset (CRStatement * a_this, FILE * a_fp, glong a_indent)
+         g_return_if_fail (a_fp && a_this);
+         str = cr_statement_ruleset_to_string (a_this, a_indent);
+         if (str) {
+-                fprintf (a_fp, str);
++                fputs (a_fp, str);
+                 g_free (str);
+                 str = NULL;
+         }
+@@ -2658,7 +2658,7 @@ cr_statement_dump_charset (CRStatement * a_this, FILE * a_fp, gulong a_indent)
+         str = cr_statement_charset_to_string (a_this,
+                                               a_indent) ;
+         if (str) {
+-                fprintf (a_fp, str) ;
++                fputs (a_fp, str) ;
+                 g_free (str) ;
+                 str = NULL ;
+         }
+@@ -2685,7 +2685,7 @@ cr_statement_dump_page (CRStatement * a_this, FILE * a_fp, gulong a_indent)
+ 
+         str = cr_statement_at_page_rule_to_string (a_this, a_indent) ;
+         if (str) {
+-                fprintf (a_fp, str);
++                fputs (a_fp, str);
+                 g_free (str) ;
+                 str = NULL ; 
+         }
+@@ -2711,7 +2711,7 @@ cr_statement_dump_media_rule (CRStatement * a_this,
+ 
+         str = cr_statement_media_rule_to_string (a_this, a_indent) ;
+         if (str) {
+-                fprintf (a_fp, str) ;
++                fputs (a_fp, str) ;
+                 g_free (str) ;
+                 str = NULL ;
+         }
+@@ -2737,7 +2737,7 @@ cr_statement_dump_import_rule (CRStatement * a_this, FILE * a_fp,
+ 
+         str = cr_statement_import_rule_to_string (a_this, a_indent) ;
+         if (str) {
+-                fprintf (a_fp, str) ;
++                fputs (a_fp, str) ;
+                 g_free (str) ;
+                 str = NULL ;
+         }
