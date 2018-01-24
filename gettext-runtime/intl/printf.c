@@ -208,7 +208,7 @@ DLL_EXPORTED
 int
 libintl_vsnprintf (char *resultbuf, size_t length, const char *format, va_list args)
 {
-  if (strchr (format, '$') == NULL)
+  if (0 && (strchr (format, '$') == NULL))
     return system_vsnprintf (resultbuf, length, format, args);
   else
     {
