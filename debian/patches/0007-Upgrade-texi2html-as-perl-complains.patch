@@ -1,4 +1,4 @@
-From 30290a12fb302bd3747f4d1c3820733db084e025 Mon Sep 17 00:00:00 2001
+From 23265b777d525df188c834e3f23a85a58fd0e5ab Mon Sep 17 00:00:00 2001
 From: Tobias Schlemmer <keinstein@users.sourceforge.net>
 Date: Wed, 24 Jan 2018 14:28:09 +0100
 Subject: Upgrade texi2html as perl complains

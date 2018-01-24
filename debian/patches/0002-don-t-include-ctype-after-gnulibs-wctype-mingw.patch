@@ -1,4 +1,4 @@
-From 9ee40b654d49effd35f37a996d4ee7b78b683871 Mon Sep 17 00:00:00 2001
+From bbcacb0ad7b44603ce11754aa717803b0cccb862 Mon Sep 17 00:00:00 2001
 From: Tobias Schlemmer <keinstein@users.sourceforge.net>
 Date: Wed, 24 Jan 2018 13:31:41 +0100
 Subject: don't include ctype after gnulibs-wctype (mingw)

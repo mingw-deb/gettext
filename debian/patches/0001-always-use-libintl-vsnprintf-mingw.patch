@@ -1,4 +1,4 @@
-From 793bf174bdaee0d88cdc567dc5e1ab196c0d3d90 Mon Sep 17 00:00:00 2001
+From 23c8a8b2a7decc29b296ffae4ebc7c63e7660391 Mon Sep 17 00:00:00 2001
 From: Tobias Schlemmer <keinstein@users.sourceforge.net>
 Date: Wed, 24 Jan 2018 13:29:15 +0100
 Subject: always use libintl vsnprintf (mingw)

@@ -1,4 +1,4 @@
-From ef881ece322b13323ac00ffb6619ac9ef00f545b Mon Sep 17 00:00:00 2001
+From e05aa73d5d42bfb54abf6b93e24f13e61f7f4de4 Mon Sep 17 00:00:00 2001
 From: Tobias Schlemmer <keinstein@users.sourceforge.net>
 Date: Wed, 24 Jan 2018 13:37:11 +0100
 Subject: gnulib fix underscore cond

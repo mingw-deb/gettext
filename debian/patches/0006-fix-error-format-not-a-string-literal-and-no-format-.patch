@@ -1,4 +1,4 @@
-From cfc7cd2e52c04097204ffaaeefe6522e8f89910f Mon Sep 17 00:00:00 2001
+From 565915cf64a41be8ec12bd211bc06dfec1e8a721 Mon Sep 17 00:00:00 2001
 From: Tobias Schlemmer <keinstein@users.sourceforge.net>
 Date: Wed, 24 Jan 2018 14:17:28 +0100
 Subject: fix error: format not a string literal and no format arguments
