@@ -14,6 +14,13 @@ SHELL = /bin/bash
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
+# Gets the full version of the source package including debian version
+DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+DEB_NOEPOCH_VERSION := $(shell echo $(DEB_VERSION) | cut -d: -f2-)
+# Gets only the upstream version of the package
+DEB_UPSTREAM_VERSION := $(shell echo $(DEB_NOEPOCH_VERSION) | sed 's/-[^-]*$$//')
+
+
 LDFLAGS=
 CPPFLAGS=-Wdate-time
 CFLAGS=-O3 -g -O2 -Wformat -Werror=format-security
@@ -66,8 +73,15 @@ override_dh_auto_configure:
 		mkdir -p build-$$target && \
 		pushd build-$$target && \
 		$(EXECUTE) /usr/bin/prepare-winedllpath && \
-		$(EXECUTE) ../configure --prefix=/usr/$$target/ \
-				--build=$$target --host=$$target && \
+		$(EXECUTE) ../configure \
+			--prefix=/usr/$$target/ \
+			--build=$$target \
+			--host=$$target \
+			--disable-java \
+			--disable-native-java \
+			--disable-csharp \
+			--enable-threads=win32 \
+			--without-emacs && \
 		popd || exit 1 ; \
 	done
 
@@ -91,6 +105,11 @@ override_dh_auto_install:
 			$(EXECUTE) eval echo "'|$$RANLIB|' '|\$$RANLIB|' '|\\$$RANLIB|' -D \"$$d\"" && \
 			$(EXECUTE) $${target}-ranlib "$$d" || exit 2 ; \
 		done && \
+		install -dm755 "$(CURDIR)/debian/tmp/usr/$${target}/lib/pkgconfig"
+		install -m644 "$(CURDIR)/debian/intl.pc" "$(CURDIR)/debian/tmp/usr/$${target}/lib/pkgconfig"
+		sed -i "$(CURDIR)/debian/tmp/usr/$${target}/lib/pkgconfig/intl.pc" \
+		      -e "s|@PREFIX[@]|/usr/$${target}|g" \
+		      -e "s|@VERSION[@]|$(DEB_UPSTREAM_VERSION)|g"
 		popd || exit 1 ; \
 	done
 	dh_install
