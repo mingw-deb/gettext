@@ -2,21 +2,21 @@ Source: mingw-w64-gettext
 Priority: optional
 Maintainer: Tobias Schlemmer <keinstein@users.berlios.de>
 Build-Depends: debhelper (>= 9), autotools-dev
-Standards-Version: 3.9.8
+Standards-Version: 4.1.1
 Section: libs
-Homepage: <insert the upstream URL, if relevant>
+Homepage: http://www.gnu.org/software/gettext/
 #Vcs-Git: https://anonscm.debian.org/collab-maint/mingw-w64-gettext.git
 #Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/mingw-w64-gettext.git
 
-Package: mingw-w64-gettext-dev
+Package: gettext-mingw-w64-dev
 Section: libdevel
 Architecture: any
-Depends: mingw-w64-gettextBROKEN (= ${binary:Version}), ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: gettext1-mingw-w64 (= ${binary:Version}), ${misc:Depends}
+Description: GNU internationalization library (mingw-w64)
+ This package contains the development files which are needed in order to compile new programs.
 
-Package: mingw-w64-gettextBROKEN
+Package: gettext-mingw-w64
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: GNU internationalization library (mingw-w64 runtime)
+ This package contains the runtime libraries and binary programs
