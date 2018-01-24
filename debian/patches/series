@@ -4,3 +4,4 @@
 0004-vs-compatible.patch
 0005-gnulib-fix-underscore-cond.patch
 0006-fix-error-format-not-a-string-literal-and-no-format-.patch
+0007-Upgrade-texi2html-as-perl-complains.patch
